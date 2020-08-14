@@ -44,13 +44,11 @@ var getJSONData = function(url){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
-  /*window.location.href="index.html"*/
+
 });
 
 
-function replace(){
-  window.location.href="index.html"
-}
+
 
 
   /*if(email == null || email.length == 0){

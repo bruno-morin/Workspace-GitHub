@@ -2,74 +2,28 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 
-var productsList = [];
+var categoriesArray = [];
 
-function showProducts(lista){
+function showCategoriesList(array){
 
     let htmlContentToAppend = "";
-    for( let i = 0; i< lista.length; i++){
-        let products = lista[i];
+    for(let i = 0; i < array.length; i++){
+        let category = array[i];
 
         htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action" onclick="enterProducts('` + products.name + `'>
+        <div class="list-group-item list-group-item-action" onclick="enterCategory('` + category.name + `')">
             <div class="row">
                 <div class="col-3">
-                    <img src="` + products.imgSrc + `"alt="` + products.description + `" class="img-thumbnail">
+                    <img src="` + category.imgSrc + `" alt="` + category.description + `" class="img-thumbnail">
                 </div>
                 <div class="col">
                     <div class="d-flex w-100 justify-content-between">
-                    <h4 clase="mb-1">` + products.name + `</h4>
-                    <small class="text-muted">` + products.productCount + `artículos</small>
-                    
-                </div>
-                <div>
-                    <p>` + products.description + `</p>
-                </div>
-            </div>
-        </div>
-        `
-        document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
-    }
-}                        
-    
-function enterProducts(products){
-    let url;
-    if(products==="Autos"){
-        url="https://japdevdep.github.io/ecommerce-api/product/all.json";
-    } else if(products==="Juguetes"){
-        url="../juguetes.json"
-    }
-    
-    getJsonData(url).then(function(resultObj){
-        if (resultObj.status === "ok")
-        {
-            productsList = resultObj.data;
-            showProducts(productsList);
-        }
-
-    });
-}    
-   
-function showProducts(lista){
-    let htmlContentToAppend = "";
-    for(let i=0; i < lista.length; i++){
-        let category = lista[i];
-
-        htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
-            <div class="row">
-                <div class="col-3">
-                    <img src="` + products.imgSrc + `" alt="` + products.description + `" class="img-thumbnail">
-                </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">`+ products.name +`</h4>
-                        <small class="text-muted">` + products.soldCount + ` artículos</small>
+                        <h4 class="mb-1">`+ category.name +`</h4>
+                        <small class="text-muted">` + category.productCount + ` artículos</small>
 
                     </div>
                     <div>
-                        <p>` + products.description + `</p>
-                        <p>` + products.currency + ` ` + products.cost + `</p>
+                        <p>` + category.description + `</p>
                     </div>
                 </div>
             </div>
@@ -79,14 +33,69 @@ function showProducts(lista){
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
     }
 }
-   
-document.addEventListener("DOMContentLoaded", function (e) {
-    getJsonData(CATEGORIES_URL).then(function(resultObj){
+
+function enterCategory(category){
+    let url;
+    if(category=== "Autos"){
+        url="https://japdevdep.github.io/ecommerce-api/product/all.json";
+    }else if(category==="Juguetes"){
+        url="../juguetes.json"
+    }
+    
+    getJSONData(url).then(function(resultObj){
         if (resultObj.status === "ok")
         {
-            productsList = resultObj.date;
-            showProducts(lista);
+            categoriesArray = resultObj.data;
+            //Muestro las categorías ordenadas
+            showProducts(categoriesArray);
         }
     });
+}
 
+function showProducts(array){
+    let htmlContentToAppend = "";
+    for(let i = 0; i < array.length; i++){
+        let category = array[i];
+
+        htmlContentToAppend += `
+        <div class="list-group-item list-group-item-action">
+            <div class="row">
+                <div class="col-3">
+                    <img src="` + category.imgSrc + `" alt="` + category.description + `" class="img-thumbnail">
+                </div>
+                <div class="col">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h4 class="mb-1">`+ category.name +`</h4>
+                        <small class="text-muted">` + category.soldCount + ` artículos</small>
+
+                    </div>
+                    <div>
+                        <p>` + category.description + `</p>
+                        <p>` + category.currency + ` ` + category.cost + `</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `
+
+        document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
+    }
+}
+
+
+
+//Función que se ejecuta una vez que se haya lanzado el evento de
+//que el documento se encuentra cargado, es decir, se encuentran todos los
+//elementos HTML presentes.
+document.addEventListener("DOMContentLoaded", function(e){
+    showSpinner();
+    getJSONData(CATEGORIES_URL).then(function(resultObj){
+        if (resultObj.status === "ok")
+        {
+            categoriesArray = resultObj.data;
+            //Muestro las categorías ordenadas
+            showCategoriesList(categoriesArray);
+            hideSpinner();
+        }
+    });
 });

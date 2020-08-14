@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 });
 
+function replace(){
+    window.location.href="welcome.html";
+  }
 
 function acceder(){
 
@@ -19,6 +22,7 @@ function acceder(){
       document.getElementById("error").innerHTML='Debe llenar los campos requeridos'
     }
   }
+  
 /*function validar() {
     var login = document.getElementById('formulario');
     var boton = document.getElementById('btn');
