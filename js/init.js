@@ -51,16 +51,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 
 
-  /*if(email == null || email.length == 0){
-    return document.getElementById("error").innerHTML='Debe indicar correctamente su email';
-  } else {
-    if( password == null || password.length ==0){
-      return document.getElementById("error").innerHTML='Debe ingresar su contraseña';
-    } else {
-      replace();
-    }
-  }
-} */
 
 
   
