@@ -21,23 +21,61 @@
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+        <a id="logeado" class="py-2 d-none d-md-inline-block" ></a>
       </div>
     </nav>
     <div class="container p-5">
-     <!--<div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-        <h4 class="alert-heading">¡A trabajar! :)</h4>
-        <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 16/08/2020) y Entrega 2 (Fecha de entrega: 30/08/2020).</p>
-        <hr>
-        <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-      </div>
-    </div> -->
     <main role="main" class="pb-5">
       <div class="text-center p-4">
           <h2>Listado</h2>
       </div>
       <div class="container">
+        <div class="row">
+            <div class="col text-right">
+                <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+                    <label class="btn btn-light active" id="sortAscCost" >
+                        <input type="radio" name="options" autocomplete="off" checked>Menor a mayor
+                    </label>
+                    <label class="btn btn-light" id="sortDescCost" >
+                        <input type="radio" name="options" autocomplete="off">Mayor a menor
+                    </label>
+                    <label class="btn btn-light" id="sortByCost" >
+                        <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Por relevancia
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+          <div class="col-md-6"></div>
+            <div class="col-md-6 col-sm-12 mb-1 container">
+              <div class="row container p-0 m-0">
+                <div class="col">
+                  <p class="font-weight-normal text-right my-2">Definir rango de precios</p>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="number" placeholder="min." id="rangeFilterCostMin">
+                </div>
+                <div class="col">
+                  <input class="form-control" type="number" placeholder="máx." id="rangeFilterCostMax">
+                </div>
+                <div class="col-3 p-0">
+                  <div class="btn-group" role="group">
+                    <button class="btn btn-light btn-block" id="rangeFilterCost">Filtrar</button>
+                    <button class="btn btn-link btn-sm" id="clearRangeFilterCost">Limpiar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="list-group" id="prod-list-container">
+            </div>
+        </div>
+    </div>
+</main>
+      <div class="container">
           <div class="row">
-              <div class="list-group" id="cat-list-container">
+              <div class="list-group" id="prod-list-container">
               </div>
           </div>
       </div>
