@@ -14,7 +14,6 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
 </head>
-
 <body>
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
@@ -26,13 +25,79 @@
       <a id="logeado" class="py-2 d-none d-md-inline-block" ></a>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 13/09/2020) y Entrega 4 (Fecha de entrega: 20/09/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+<div style="height: 500px;">
+
+<main role="main">
+  <div class="container mt-5">
+    <div class="text-center p-4">
+      <h2>Información del producto</h2>
     </div>
+    <h3 id="productName">
+    </h3>
+
+    <div class="container">
+      <div class="row">
+        <div class="row text-center text-lg-left pt-2" id="productImg">
+
+        </div>
+      </div>
+    </div>
+    
+      <hr class="my-3">
+    <dl>
+
+      <dt>Descripción</dt>
+        <dd>
+          <p id="productDescription"></p>
+        </dd>
+
+        <dt>Costo</dt>
+        <dd>
+          <p id="productCost"></p>
+        </dd>
+
+        <dt>Cantidad</dt>
+        <dd>
+          <p id="productSoldCount"></p>
+        </dd>
+
+        <dt>Categoria</dt>
+        <dd>
+          <p id="productCat"></p>
+        </dd>
+
+        <dt>Comentarios</dt>
+        <dd>
+          <div id="comenta"></div>
+          <div id="refresh">
+            <div class="container">
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                  <form id="formu">
+                    <input id="score" type="number" placeholder="Califica este producto">
+                    <p id="scoreError"></p>
+                    <br>
+                    <br>
+                    <input style="height: 100px;" id="comment" placeholder="Deja aquí tu comentario!">
+                    <p id="commentError"></p>
+                    <br>
+                    <br>
+                    <button class=" btn btn-primary" type="button" id="send" onclick="comentario()">Enviar</button>
+                  </form>
+                </div>
+              </div>
+              <p>
+                <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  Ingresar comentarios
+                </button>
+              </p>
+              </div>
+            </div>
+            <div>
+              <p id="enviado"></p>
+            </div>
+        </dd>
+    </dl>
   </div>
   <footer class="text-muted">
     <div class="container">
@@ -51,6 +116,12 @@
       <div></div>
     </div>
   </div>
+</main>
+</div>
+
+
+
+
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>

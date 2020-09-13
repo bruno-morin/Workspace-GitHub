@@ -1,6 +1,99 @@
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
+var product = {};
+var comments = {};
+
+function showImagenes(array){
+
+    let htmlContentToAppend ="";
+
+    for(let i= 0; i < array.length; i++){
+        let imagenes = array[i];
+
+        htmlContentToAppend += `
+        <div class="col-lg-3 col-md-4 col-6">
+            <div class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="` + imagenes + `" alt="">
+            </div>
+        </div>
+        `
+
+        document.getElementById("productImg").innerHTML = htmlContentToAppend;
+    }
+}
+
+
 document.addEventListener("DOMContentLoaded", function(e){
+    getJSONData(PRODUCT_INFO_URL).then(function(resultObj){
+        if (resultObj.status === "ok")
+        {
+            product = resultObj.data;
+
+            let pName = document.getElementById("productName");
+            let pDescription = document.getElementById("productDescription");
+            let pCosto = document.getElementById("productCost");
+            let pCount = document.getElementById("productSoldCount");
+            let pCategory = document.getElementById("productCat");
+        
+            pName.innerHTML = product.name;
+            pDescription.innerHTML = product.description;
+            pCosto.innerHTML = product.currency + ' ' + product.cost;
+            pCount.innerHTML = product.soldCount;
+            pCategory.innerHTML = product.category;
+
+            showImagenes(product.images);
+        }
+    });
 
 });
+
+function leerComentarios(objetos){
+
+    let htmlContentToAppend = "";
+
+    for(let i = 0 ; i < objetos.length; i++){
+        let comentos = objetos[i];
+
+        htmlContentToAppend += `
+            <div class="row">
+                <div class="col-3">
+                    <p>` + comentos.score + `` + comentos.description + `</p>
+                </div>
+                <div class="col">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h4 class="mb-1">`+ comentos.user +`</h4>
+                        <small class="text-muted">` + comentos.dateTime + ` </small>
+                    </div>
+                </div>
+            </div>
+        </a>
+        `
+        document.getElementById("comenta").innerHTML = htmlContentToAppend;
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function(e){
+    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
+        if (resultObj.status === "ok")
+        {
+            objetos = resultObj.data;
+            leerComentarios(objetos);
+        }
+    });
+});
+
+
+function comentario(){
+
+    var comentario = document.getElementById("comment").value;
+    var puntuacion = document.getElementById("score").value;
+
+    if (comentario == ""){
+        document.getElementById("commentError").innerHTML = "No ha ingresado nada aun";
+    } else if ( puntuacion == ""){
+        document.getElementById("scoreError").innerHTML ="No quieres ingresar una puntuación?";
+    } else {
+        document.getElementById("enviado").innerHTML = "Gracias por tu comentario!";
+        document.getElementById("refresh").remove();
+    };
+}
+
+
