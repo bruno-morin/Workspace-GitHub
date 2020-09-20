@@ -1,5 +1,5 @@
-var product = {};
-var comments = {};
+var relatedProducts = [];
+var comments = [];
 
 function showImagenes(array){
 
@@ -76,6 +76,51 @@ document.addEventListener("DOMContentLoaded", function(e){
         {
             objetos = resultObj.data;
             leerComentarios(objetos);
+        }
+    });
+});
+
+function showRelated(rel){
+
+    let htmlContentToAppend = "";
+    for(let i = 1; i < relatedProducts.length; i++){
+        let relacionados = relatedProducts[i];
+
+        
+
+            htmlContentToAppend += `
+                <div class="list-group-item list-group-item-action">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="` + relacionados.imgSrc + `" alt="` + relacionados.description + `" class="img-thumbnail">
+                    </div>
+                    <div class="col">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h4 class="mb-1">`+ relacionados.name +`</h4>
+                                <small class="text-muted">` + relacionados.soldCount + ` artículos</small>
+
+                            </div>
+                            <div>
+                                <p>` + relacionados.description + `</p>
+                                <p>` + relacionados.currency + ` ` + relacionados.cost + `</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            `
+        }
+
+        document.getElementById("related").innerHTML = htmlContentToAppend;
+    }
+
+
+document.addEventListener("DOMContentLoaded", function(e){
+    getJSONData(PRODUCTS_URL).then(function(resultObj){
+        if (resultObj.status === "ok")
+        {
+            relatedProducts = resultObj.data;
+            showRelated(relatedProducts);
         }
     });
 });

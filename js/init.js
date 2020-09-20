@@ -49,6 +49,10 @@ document.addEventListener("DOMContentLoaded", function(e){
     document.getElementById("logeado").innerHTML = sessionStorage.getItem("usuario");
   }
   });
+
+  function renew(){
+    sessionStorage.clear();
+  }
   
 
 
