@@ -54,19 +54,88 @@
       </div>
   </nav>
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    <div  role="alert" style="position: relative; width:auto; top: 0;">
+      <div>
+        <h1 class="text-center" >Mi carrito de compras</h1>
+      </div>
+    <div id="spinner-wrapper"></div>
+    <div class="lds-ring">
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-8">
+        <h4>Articulos seleccionados</h4>
+        <div class="container">
+          <div class="row">
+              <div class="list-group" id="purchased">
+              </div>
+          </div>
+      </div>
+      </div>
+      <div class=" card col-4">
+        <br>
+        <h4 class="text-center">Opciones de compra</h4>
+        <br>
+        <div class="col-sm">
+          <label for="inputCantidad">Cantidad a comprar</label>
+          <input type="number" style= "width: 50px" id="inputCantidad" min="1">
+          <label for="inputTotalUnidad">Costo total por artículo</label>
+          <input type="" style="width: 60px" id="inputTotalUnidad" onchange="costoArticulo()" disabled> pesos
+          <label for="subtotal">Subtotal</label>
+          <input type="" style="width: 60px" id="subtotal"disabled> pesos
+          <label for="costoEnvio">Costo de envío</label>
+          <input type="" style="width: 60px" id="costoEnvio" disabled> pesos
+          <label for="total">Total a abonar</label>
+          <input type="" style="width: 60px" id="total" disabled> pesos
+          <br>
+          <br>
+          <h5>Forma de pago</h5>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="select" id="pago1" value="" checked >
+            <label class="form-check-label" for="credito">
+              Tarjeta de crédito
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="select" id="pago2" value="" >
+            <label class="form-check-label" for="bancaria">
+              Transferencia bancaria
+            </label>
+          </div>
+          <div>
+            <br>
+            <h5>Método de envío</h5>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="envio" id="envio1" value="" checked>
+              <label class="form-check-label" for="envio1">
+                Premium (2-5 días)
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="envio" id="envio2" value="">
+              <label class="form-check-label" for="envio2">
+                Express (5-8 días)
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="envio" id="envio3" value="">
+              <label class="form-check-label" for="envio3">
+                Standard (12 a 15 días)
+              </label>
+            </div>
+          </div>
+          <br>
+          <button class="btn btn-primary">Confirmar compra</button>
+          <br>
+          <br>
+        </div> 
+      </div>
     </div>
   </div>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+  <div class="container">
+    <div class="card-body">
+      <div>
+      </div>
     </div>
   </div>
   <script src="js/jquery-3.4.1.min.js"></script>
@@ -75,5 +144,8 @@
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
 </body>
-
 </html>
+<!-- Para hacer el carrito me informé a partir de la página de Bootstrap 4
+  y utilicé como referencia el ejemplo de store.nike.com que aparece 
+  en https://www.templatemonster.com/blog/es/40-ejemplos-de-mejores-disenos-de-pagina-de-carrito-de-compras/-->
+  
