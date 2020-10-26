@@ -15,11 +15,14 @@ function showCarrito(comprados) {
         <div class="col">
                 <div class="d-flex w-100 justify-content-between">
                     <h4 class="mb-1">`+ compra.name + `</h4>
-                    <small class="text-muted" id="cant" onchange='costoArticulo(this.value)'>` + compra.count + ` artículos</small>
+                    <small class="text-muted">` + `<span id="cant"></span>` + ` artículos</small>
 
                 </div>
                 <div>
                     <p>` + compra.currency + ` <span id="costoUnit">` + compra.unitCost + `</span> </p>
+                </div>
+                <div>
+                   <span>Costo total:</span> <p id="inputTotalUnidad"></p>
                 </div>
             </div>
         </div>
@@ -44,14 +47,20 @@ document.addEventListener("DOMContentLoaded", function(e){
 
 
 
-  
-  function costoArticulo(){
-    let costo = document.getElementById('costoUnit').value;
-    let cantidad = document.getElementById('inputCantidad').innerHtml;
+function cambiarCantidad(){
+    var x = document.getElementById("inputCantidad").value;
+    document.getElementById("cant").innerHTML= x;
+}
 
-    var subtotal = costo*cantidad;
+function calcularCosto(){
+    var x = document.getElementById("inputCantidad").value;
+    document.getElementById("inputTotalUnidad").innerHTML = x*100 + " "+ "pesos";
+}
 
-    document.getElementById("inputTotalUnidad").innerHTML =  subtotal;
-  }
+function subtotal(){
+    var x = document.getElementById("inputCantidad").value;
+    document.getElementById("subtotal").innerHTML= x*100 + " "+ "pesos";
+}
 
-  /*document.addEventListener("DOMContentLoaded", costoArticulo());*/
+/*Estas funciones solo muestran el subtotal para el producto cargado en el Json, 
+para que sirvan para cualquier producto creo que debería utilizarse un ciclo for, pero no lo he resuelto*/
