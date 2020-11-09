@@ -48,19 +48,51 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a  class="dropdown-item" href="#"></a>
           <a class="dropdown-item" href="cart.html">Ver mi carrito</a>
-          <a class="dropdown-item" href="#"> Mi Perfil</a>
+          <a class="dropdown-item" href="my-profile.html"> Mi Perfil</a>
           <a class="dropdown-item" href="index.html" onclick="renew()">Cerrar sesión</a>
         </div>
       </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div>
+    <div class="container">
+      <div class="text-center">
+      <h2>Mi perfil</h2>
+    <div>
+      <h3>
+        Datos de usuario
+      </h3>
     </div>
   </div>
+</div>
+<div class="container">
+  <fieldset id="camposUsuario" disabled>
+    <div class="card text-center">
+      <div class="card-body" >
+        <label class="card-title" for="nombreCompleto" style= "width: 200px;">Nombre y apellidos</label>
+        <input id="nombreCompleto"type="text" size="15">
+      </div>
+      <div class="card-body">
+        <label class="card-title" for="edad" style= "width: 200px;">Edad</label>
+        <input id="edad"type="number">
+      </div>
+      <div class="card-body">
+        <label class="card-title" for="correo" style= "width: 200px;">E-mail</label>
+        <input id="correo"type="text">
+      </div>
+      <div class="card-body">
+        <label class="card-title" for="contacto" style= "width: 200px;">Teléfono de contacto</label>
+        <input id="contacto"type="text">
+      </div>
+  </fieldset>
+  <div class="card-body text-center">
+     <p id="valide"></p>
+  </div>
+  <div class="text-center">
+   <button class="btn btn-primary btn lg" onclick="guardar(), guardarPerfil(), validarCampos()">Guardar datos</button>
+   <button class="btn btn-danger btn lg" onclick="editar()">Editar campos</button>
+  </div>
+</div>
+ 
   <footer class="text-muted bg-light">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
@@ -87,5 +119,4 @@
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
 </body>
-
 </html>

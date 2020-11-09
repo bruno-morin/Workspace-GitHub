@@ -45,33 +45,28 @@ function showProductsList(array){
             ((maxCost === undefined) || (maxCost != undefined && parseInt(product.soldCount) <= maxCost))){
 
        
-            htmlContentToAppend += `
-            <a href="product-info.html" class="list-group-item list-group-item-action">
-                <div class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
-                    </div>
-                    <div class="col">
+                htmlContentToAppend += `
+                <div class="col-md-4 col-12 p-1">
+                    <a href="product-info.html" class="list-group-item-action card">
+                    <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
+                        <div class="card-body" style="height:200px;">
                             <div class="d-flex w-100 justify-content-between">
-                                <h4 class="mb-1">`+ product.name +`</h4>
+                                <h4 class="card-title">`+ product.name + `</h4>
                                 <small class="text-muted">` + product.soldCount + ` artículos</small>
-
                             </div>
                             <div>
-                                <p>` + product.description + `</p>
-                                <p>` + product.currency + ` ` + product.cost + `</p>
+                                    <p>` + product.description + `</p>
+                                    <p>` + product.currency + ` ` + product.cost + `</p>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
-            </a>
-            `
+                `
+            }
+    
+            document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
         }
-
-        document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
     }
-}
 
 function sortAndShowProducts(sortCriteria, productsArray){
     currentSortCriteria =sortCriteria;

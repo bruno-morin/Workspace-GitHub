@@ -46,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 });
 
 
-
 function cambiarCantidad(){
     var x = document.getElementById("inputCantidad").value;
     document.getElementById("cant").innerHTML= x;
